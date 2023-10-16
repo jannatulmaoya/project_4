@@ -13,11 +13,13 @@ class MainAppPageView extends GetView<MainAppPageController> {
   Widget build(BuildContext context) {
     final Controller = Get.put(MainAppPageController());
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: lightThemes,
       darkTheme: darkTheme,
-      themeMode: Controller.Theme.value ? ThemeMode.light : ThemeMode.dark,
+      themeMode:
+          Controller.isDarkTheme.value ? ThemeMode.light : ThemeMode.dark,
       initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
+      getPages: AppPages.Page,
     );
   }
 }

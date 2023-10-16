@@ -6,8 +6,8 @@ ThemeData lightThemes = ThemeData(
     primaryColor: Color.fromRGBO(7, 248, 124, 0.522),
     appBarTheme: const AppBarTheme(
         backgroundColor: Color.fromRGBO(36, 219, 182, 0.353),
-        titleTextStyle: TextStyle(
-            color: Color.fromRGBO(243, 181, 182, 0.741), fontSize: 25)),
+        titleTextStyle:
+            TextStyle(color: Color.fromRGBO(234, 13, 13, 0.733), fontSize: 25)),
     textTheme: TextTheme(
       bodyText1: TextStyle(color: Colors.black),
       bodyText2: TextStyle(color: Colors.black),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:project_4/apps/modiuls/splash_screeen/controllers/splash_Controller.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -7,6 +7,7 @@ class SplashView extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SplashController());
     return Scaffold(
       body: Center(
         child: Column(
