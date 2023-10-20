@@ -19,7 +19,7 @@ class SplashView extends GetView<SplashController> {
               child: CircularProgressIndicator(),
             ),
             SizedBox(
-              height: 100,
+              height: 200,
               child: Text("Looding......"),
             )
           ],

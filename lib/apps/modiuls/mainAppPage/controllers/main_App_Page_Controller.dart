@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_4/storage/local_data.dart';
 
-import '../../../routes/app_page.dart';
-
 class MainAppPageController extends GetxController {
   RxBool isDarkTheme = false.obs;
   @override
@@ -14,6 +12,7 @@ class MainAppPageController extends GetxController {
 
   CheckTheme() async {
     isDarkTheme.value = await LocalData().getThemeData();
+    Get.changeThemeMode(isDarkTheme.value ? ThemeMode.dark : ThemeMode.light);
   }
 
   changeTheme() async {

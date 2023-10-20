@@ -11,7 +11,7 @@ abstract class Routes {
 abstract class _Path {
   _Path._();
   static const MainAppPage = "/MainAppPage";
-  static const SplashScreen = "/SplashScreen";
+  static const SplashScreen = "/";
   static const HomePage = "/HomePage";
   static const UserInputPage = "/UserInputPage";
 }
