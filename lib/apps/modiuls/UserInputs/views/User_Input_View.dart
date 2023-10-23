@@ -43,7 +43,7 @@ class UserInputView extends GetView<UserInputController> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Get.to(() => HomeView());
+                      controller.checkData();
                     },
                     child: const Text("submit"))
               ],

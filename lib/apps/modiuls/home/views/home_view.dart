@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:project_4/apps/modiuls/home/controllers/home_controller.dart';
 import 'package:project_4/widgets/K_App_Bar.dart';
 
@@ -24,12 +25,12 @@ class HomeView extends GetView<HomeController> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: Get.width / 5,
-                    height: Get.width / 5,
+                    width: Get.width / 10,
+                    height: Get.width / 10,
                     child: const CircularProgressIndicator(),
                   ),
                   SizedBox(
-                    height: Get.width / 5,
+                    height: Get.width / 10,
                   ),
                   ElevatedButton.icon(
                       onPressed: () {
@@ -47,17 +48,26 @@ class HomeView extends GetView<HomeController> {
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      // Image(Image.network(
-                      //   "https://cdn.pixabay.com/photo/2016/01/08/11/57/butterflies-1127666_1280.jpg",
-                      //   height: 100,
-                      //   width: 100,
-                      // )),
-                      KText(
-                          text: "test",
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25),
-                      KText(
-                        text: "test",
+                      SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: Image(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                            controller.userNameImage.value,
+                          ),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          KText(
+                              text: controller.user.value,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                          KText(
+                            text: controller.userName.value,
+                          )
+                        ],
                       )
                     ],
                   ),

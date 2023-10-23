@@ -11,17 +11,17 @@ class UserInputController extends GetxController {
   }
 
   checkData() {
-    if (textEditingController.text == "") {
+    if (textEditingController.text.isEmpty) {
       Get.snackbar(
         "Input field",
         "Text from field is empty ",
         duration: Duration(seconds: 1),
       );
-    } else if (textEditingController.text.contains("")) {
+    } else if (textEditingController.text.contains(" ")) {
       Get.snackbar("Input field", "Text from field is empty ",
           duration: Duration(seconds: 1));
     } else {
-      Get.to(() => HomeView());
+      Get.to(() => HomeView(), arguments: textEditingController.text);
     }
   }
 }
