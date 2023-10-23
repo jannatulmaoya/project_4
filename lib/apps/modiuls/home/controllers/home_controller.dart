@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import 'package:http/http.dart' as http;
+
+import '../models/repo_model.dart';
 
 class HomeController extends GetxController {
   var arData;
@@ -16,6 +17,12 @@ class HomeController extends GetxController {
   }
 
   RxBool isloading = false.obs;
+  RxBool isListView = false.obs;
+
+  RxList<RepoModel> RepoList = <RepoModel>[].obs;
+  changeListview() {
+    isListView.value = !isListView.value;
+  }
 
   RxString userName = "".obs;
   RxString userNameImage = "".obs;
@@ -42,7 +49,18 @@ class HomeController extends GetxController {
     var responsData = await http.get(Uri.parse(username));
     if (responsData.statusCode == 200) {
       var userData = json.decode(responsData.body);
-      print(userData["avater_url"]);
+      for (var element in userData) {
+        RepoList.add(RepoModel(
+          name: element["name"].toString(),
+          url: element["html_url"].toString(),
+          createdAt: element["created_at"].toString(),
+          updatedAt: element["updated_at"].toString(),
+          pushedAt: element["pushed_at"].toString(),
+        ));
+      }
+      RepoList.refresh();
+
+      isloading.value = false;
     }
   }
 }

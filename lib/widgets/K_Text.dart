@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 
 class KText extends StatelessWidget {
   const KText({
-
     super.key,
     required this.text,
-    this.fontSize,
+    this.fontSize = 16,
     this.fontWeight = FontWeight.normal,
   });
   final String text;
@@ -17,6 +15,7 @@ class KText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(fontWeight: fontWeight, fontSize: fontSize),
     );
   }

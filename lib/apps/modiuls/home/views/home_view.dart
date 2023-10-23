@@ -1,6 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
 import 'package:project_4/apps/modiuls/home/controllers/home_controller.dart';
 import 'package:project_4/widgets/K_App_Bar.dart';
 
@@ -74,7 +76,6 @@ class HomeView extends GetView<HomeController> {
                   const SizedBox(
                     height: 20,
                   ),
-
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,11 +84,22 @@ class HomeView extends GetView<HomeController> {
                       const SizedBox(width: 50),
                       const KText(text: "RepoList"),
                       const SizedBox(width: 50),
-                      const Icon(Icons.grid_view),
+                      IconButton(
+                          onPressed: () {
+                            controller.changeListview();
+                          },
+                          icon: Icon(Icons.grid_view)),
                     ],
                   ),
                   SizedBox(
                     height: 20,
+                  ),
+                  Obx(
+                    () => controller.RepoList.isEmpty
+                        ? const SizedBox()
+                        : controller.isListView.value
+                            ? Klistview()
+                            : KGridCard(),
                   ),
                   // Klistview(),
                   SizedBox(
