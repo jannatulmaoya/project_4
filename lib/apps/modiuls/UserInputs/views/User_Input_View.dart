@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:project_4/apps/modiuls/home/views/home_view.dart';
-import 'package:project_4/apps/routes/app_page.dart';
 
 import '../../../../widgets/K_App_Bar.dart';
 import '../controllers/User_Input_Controller.dart';

@@ -1,11 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:project_4/apps/modiuls/home/controllers/home_controller.dart';
 import 'package:project_4/widgets/K_App_Bar.dart';
 
+import '../../../../widgets/K_Grid_View.dart';
 import '../../../../widgets/K_List_View.dart';
 import '../../../../widgets/K_Text.dart';
 
@@ -27,12 +26,12 @@ class HomeView extends GetView<HomeController> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: Get.width / 10,
-                    height: Get.width / 10,
+                    width: Get.width / 5,
+                    height: Get.width / 5,
                     child: const CircularProgressIndicator(),
                   ),
                   SizedBox(
-                    height: Get.width / 10,
+                    height: Get.width / 5,
                   ),
                   ElevatedButton.icon(
                       onPressed: () {
@@ -47,7 +46,7 @@ class HomeView extends GetView<HomeController> {
               padding: const EdgeInsets.all(20.0),
               child: SingleChildScrollView(
                 child: Column(children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(
@@ -94,57 +93,14 @@ class HomeView extends GetView<HomeController> {
                   SizedBox(
                     height: 20,
                   ),
-                  Obx(
-                    () => controller.RepoList.isEmpty
-                        ? const SizedBox()
-                        : controller.isListView.value
-                            ? Klistview()
-                            : KGridCard(),
-                  ),
-                  // Klistview(),
-                  SizedBox(
-                    height: 100 * 10,
-                    child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisSpacing: 30,
-                          mainAxisSpacing: 30,
-                          crossAxisCount: 4),
-                      itemBuilder: (context, index) => KGridCard(),
-                    ),
-                  )
+                  Obx(() => controller.RepoList.isEmpty
+                      ? const SizedBox()
+                      : controller.isListView.value
+                          ? Klistview()
+                          : KGridView()),
                 ]),
               ),
             )),
-    );
-  }
-}
-
-class KGridCard extends StatelessWidget {
-  const KGridCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        height: 100,
-        color: Colors.pink,
-        padding: EdgeInsets.symmetric(horizontal: 25),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            KText(
-              text: "Repo",
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-            KText(text: "Repo")
-          ],
-        ),
-      ),
     );
   }
 }
