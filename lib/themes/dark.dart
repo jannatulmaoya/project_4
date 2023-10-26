@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData(
+    iconTheme: IconThemeData(color: Colors.white),
+    iconButtonTheme: IconButtonThemeData(
+        style: ButtonStyle(iconColor: MaterialStatePropertyAll(Colors.white))),
     primaryColor: Colors.white,
     appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey.shade500,

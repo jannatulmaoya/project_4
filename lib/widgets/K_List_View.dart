@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
 
+import '../apps/modiuls/home/models/repo_model.dart';
 import 'K_Text.dart';
 
 class Klistview extends StatelessWidget {
   const Klistview({
     super.key,
+    required this.data,
   });
+  final List<RepoModel> data;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 100 * 20,
+        height: 120 * data.length.toDouble(),
         child: ListView.separated(
-          itemCount: 20,
-          physics: NeverScrollableScrollPhysics(),
+          itemCount: data.length,
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           separatorBuilder: (context, index) {
-            return SizedBox(
+            return const SizedBox(
               height: 10,
             );
           },
           itemBuilder: (context, index) {
+            RepoModel item = data[index];
             return Kcard(
-              Ksize: "$index",
+              item: item,
             );
           },
         ));
@@ -32,9 +36,10 @@ class Klistview extends StatelessWidget {
 class Kcard extends StatelessWidget {
   const Kcard({
     super.key,
-    required this.Ksize,
+    required this.item,
   });
-  final String Ksize;
+
+  final RepoModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -46,23 +51,18 @@ class Kcard extends StatelessWidget {
         height: 100,
         width: 1000,
         color: Colors.amber,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                KText(
-                  text: "text, $Ksize",
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                KText(text: "dart")
-              ],
-            )
+            SizedBox(
+              width: 260,
+              child: KText(
+                text: item.name,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
           ],
         ),
       ),

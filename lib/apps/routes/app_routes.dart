@@ -6,6 +6,7 @@ abstract class Routes {
   static const SPlashScreen = _Path.SplashScreen;
   static const HomePage = _Path.HomePage;
   static const UserInputPage = _Path.UserInputPage;
+  static const RepoWebView = _Path.RepoWebView;
 }
 
 abstract class _Path {
@@ -14,4 +15,5 @@ abstract class _Path {
   static const SplashScreen = "/";
   static const HomePage = "/HomePage";
   static const UserInputPage = "/UserInputPage";
+  static const RepoWebView = "/RepoWebView ";
 }

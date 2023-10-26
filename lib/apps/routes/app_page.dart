@@ -33,6 +33,10 @@ class AppPages {
       name: _Path.UserInputPage,
       page: () => const UserInputView(),
       binding: UserInputBinding(),
-    )
+    ),
+    GetPage(
+        name: _Path.RepoWebView,
+        page: () => const RepoWebViewController(),
+        binding: RepoWebViewBinding()),
   ];
 }

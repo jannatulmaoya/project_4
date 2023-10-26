@@ -16,6 +16,7 @@ class KText extends StatelessWidget {
     return Text(
       text,
       overflow: TextOverflow.ellipsis,
+      maxLines: 2,
       style: TextStyle(fontWeight: fontWeight, fontSize: fontSize),
     );
   }

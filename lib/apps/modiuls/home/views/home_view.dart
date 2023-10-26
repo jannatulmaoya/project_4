@@ -79,7 +79,11 @@ class HomeView extends GetView<HomeController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      const KText(text: "Sort"),
+                      InkWell(
+                          onTap: () {
+                            controller.showSortDi();
+                          },
+                          child: const KText(text: "Sort")),
                       const SizedBox(width: 50),
                       const KText(text: "RepoList"),
                       const SizedBox(width: 50),
@@ -96,8 +100,12 @@ class HomeView extends GetView<HomeController> {
                   Obx(() => controller.RepoList.isEmpty
                       ? const SizedBox()
                       : controller.isListView.value
-                          ? Klistview()
-                          : KGridView()),
+                          ? Klistview(
+                              data: controller.RepoList,
+                            )
+                          : KGridView(
+                              data: controller.RepoList,
+                            )),
                 ]),
               ),
             )),
